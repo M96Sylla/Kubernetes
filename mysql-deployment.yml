@@ -1,4 +1,4 @@
-apiVersion: 'apps/v1'
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wp-mysql
@@ -6,7 +6,7 @@ metadata:
     app: wordpress
   namespace: wordpress
 spec:
-  replicas: '1'
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
@@ -24,6 +24,8 @@ spec:
         name: mysql
         env:
         - name: MYSQL_DATABASE
+          value: wordpress
+        - name: MYSQL_USER
           value: toto
         - name: MYSQL_PASSWORD
           valueFrom:
@@ -36,11 +38,11 @@ spec:
               name: app-wordpress-secret
               key: mysql_random_root_password
         ports:
-        - containerPort: '3306'
+        - containerPort: 3306
           name: mysql
         volumeMounts:
         - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql_password
+          mountPath: /var/lib/mysql
         volumes:
         - name: mysql-persistent-storage
           hostPath:

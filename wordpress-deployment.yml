@@ -1,4 +1,4 @@
-apiVersion: 'apps/v1'
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
@@ -6,7 +6,7 @@ metadata:
     app: wordpress
   namespace: wordpress
 spec:
-  replicas: '1'
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
@@ -35,7 +35,7 @@ spec:
               name: app-wordpress-secret
               key: wordpress_db_password
         ports:
-        - containerPort: '80'
+        - containerPort: 80
           name: wordpress
         volumeMounts:
         - name: wp-persistent-storage
