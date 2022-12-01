@@ -4,7 +4,7 @@ metadata:
   name: wp-mysql
   labels:
     app: wordpress
-    namespace: wordpress
+  namespace: wordpress
 spec:
   replicas: 1
   selector:
