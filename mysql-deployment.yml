@@ -4,7 +4,7 @@ metadata:
   name: wp-mysql
   labels:
     app: wordpress
-  namespace: wordpress
+    namespace: wordpress
 spec:
   replicas: 1
   selector:
@@ -43,7 +43,7 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
-        volumes:
-        - name: mysql-persistent-storage
-          hostPath:
-            path: /data/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        hostPath:
+          path: /data/mysql
